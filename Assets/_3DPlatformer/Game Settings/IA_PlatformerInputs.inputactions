@@ -1,5 +1,5 @@
 {
-    "name": "3DP_Inputs",
+    "name": "IA_PlatformerInputs",
     "maps": [
         {
             "name": "Player",
@@ -92,7 +92,7 @@
                 {
                     "name": "",
                     "id": "9668230e-059a-4b5d-b74c-2e9a7abe190a",
-                    "path": "<Gamepad>/rightStick",
+                    "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
