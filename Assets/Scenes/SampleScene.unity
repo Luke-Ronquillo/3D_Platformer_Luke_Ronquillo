@@ -1015,9 +1015,9 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0, z: 0}
   moveSpeed: 4
   runSpeed: 8
-  jumpForce: 12
+  jumpForce: 1
   turnSpeed: 0.1
-  gravityForce: -2
+  gravityForce: -10
   playerVelocity: {x: 0, y: 0, z: 0}
   groundCheck: {fileID: 1844047327}
   groundLayer:

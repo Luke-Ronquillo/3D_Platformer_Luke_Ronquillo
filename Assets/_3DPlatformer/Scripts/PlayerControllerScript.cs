@@ -82,7 +82,7 @@ public class PlayerControllerScript : MonoBehaviour
     {
         groundCollider = Physics.OverlapSphere(groundCheck.position, 0.1f, groundLayer);
         isGrounded = (groundCollider.Length > 0);
-        if (isGrounded)
+        if (isGrounded && playerVelocity.y < 0)
         {
             playerVelocity.y = -0.5f;
         }
