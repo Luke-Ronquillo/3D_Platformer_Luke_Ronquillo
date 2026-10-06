@@ -1,5 +1,12 @@
 fileFormatVersion: 2
-guid: 6daeba10e6d97854b884d3576c2685ec
+guid: 05e3ceb60d1f6434496e6a0c75970028
+AssetOrigin:
+  serializedVersion: 1
+  productId: 391354
+  packageName: Mushroom Monster Cute Series
+  packageVersion: 1.0
+  assetPath: Assets/Mushroom Monster/FBX/No Root/Mushroom@Take Damage.fbx
+  uploadId: 948560
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -29,7 +36,36 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take Damage
+      takeName: Take 001
+      internalID: 1827226128182048838
+      firstFrame: 5
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []

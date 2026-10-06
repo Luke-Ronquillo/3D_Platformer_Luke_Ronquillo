@@ -24,6 +24,8 @@ public class PlayerControllerScript : MonoBehaviour
     public float quickJumpMultiplier = 0.5f;
     public TMP_Text coyoteText;
     public TMP_Text bufferText;
+    public int numExtraJumps = 1;
+    [SerializeField] int _jumps;
 
     // Coyote and buffer variables
     public float coyoteTimer = 0.5f;
@@ -43,6 +45,9 @@ public class PlayerControllerScript : MonoBehaviour
 
     [Header("Boolean Variables")]
     public bool isGrounded;
+
+    [Header("Attacking")]
+    public bool inAction;
     private void Awake()
     {
         if (_inputs == null)
@@ -67,13 +72,23 @@ public class PlayerControllerScript : MonoBehaviour
     private void Update()
     {
         HandlePhysics();
-        HandleInput();
-        HandleMovement();
+
+        if (!inAction)
+        {
+            HandleInput();
+            HandleMovement();
+        }
+
+        // Set animation value
+        _anim.SetBool("InAction", inAction);
 
         // Handle jumping value
         if (isGrounded)
+        {
+            _jumps = numExtraJumps;
             coyoteTime = coyoteTimer;
-        else 
+        }
+        else
             coyoteTime -= Time.deltaTime;
 
         jumpBuffer -= Time.deltaTime;
@@ -90,17 +105,34 @@ public class PlayerControllerScript : MonoBehaviour
             jumpBuffer = jumpBufferTime;
             // coyoteTime = 0;
         }
-
+        if (_inputs.Player.Attack.triggered)
+        {
+            inAction = true;
+            _anim.SetTrigger("Attack");
+        }
         if (_inputs.Player.Jump.WasReleasedThisFrame() && playerVelocity.y > 0)
         {
             playerVelocity.y *= quickJumpMultiplier;
         }
-        if (jumpBuffer > 0 && coyoteTime > 0)
+        if (jumpBuffer > 0)
         {
-            coyoteTime = 0;
-            jumpBuffer = 0;
-            playerVelocity.y = Mathf.Sqrt(jumpForce * -3f * gravityForce);
-            _anim.SetTrigger("Jump");
+            if (coyoteTime > 0)
+            {
+                _jumps--;
+                coyoteTime = 0;
+                jumpBuffer = 0;
+                playerVelocity.y = Mathf.Sqrt(jumpForce * -3f * gravityForce);
+                _anim.SetTrigger("Jump");
+            }
+            else if (_jumps > 0)
+            {
+                playerVelocity.y = 0;
+                _jumps--;
+                coyoteTime = 0;
+                jumpBuffer = 0;
+                playerVelocity.y = Mathf.Sqrt(jumpForce * -3f * gravityForce);
+                _anim.SetTrigger("Jump");
+            }
         }
     }
     private void HandleMovement()
